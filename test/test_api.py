@@ -1,6 +1,7 @@
 import requests
 from config import TOKEN, base_url, ver_film_name, ver_actor, ver_year, ver_fees_russia_value, neg_ver_year
 import allure
+import pytest
 
 
 HEADERS = {"X-API-KEY": TOKEN}
@@ -10,6 +11,7 @@ HEADERS = {"X-API-KEY": TOKEN}
 @allure.description('Проверяется статус-код 200')
 @allure.feature('READ')
 @allure.severity('critical')
+@pytest.mark.api
 def test_search_film_name_api():
     with allure.step('Задать url запроса'):
         url = f"{base_url}/v1.4/movie/search"
@@ -29,6 +31,7 @@ def test_search_film_name_api():
 @allure.description('Проверяется статус-код 200')
 @allure.feature('READ')
 @allure.severity('critical')
+@pytest.mark.api
 def test_search_actor_api():
     with allure.step('Задать url запроса'):
         url = f"{base_url}/v1.4/person/search"
@@ -48,6 +51,7 @@ def test_search_actor_api():
 @allure.description('Проверяется статус-код 200')
 @allure.feature('READ')
 @allure.severity('normal')
+@pytest.mark.api
 def test_search_random_api():
     with allure.step('Задать url запроса'):
         url = f"{base_url}/v1.4/movie/random"
@@ -67,6 +71,7 @@ def test_search_random_api():
 @allure.description('Проверяется статус-код 400')
 @allure.feature('READ')
 @allure.severity('normal')
+@pytest.mark.api
 def test_negativ_search_random_api():
     with allure.step('Задать url запроса'):
         url = f"{base_url}/v1.4/movie/random"
@@ -86,6 +91,7 @@ def test_negativ_search_random_api():
 @allure.description('Проверяется статус-код 401')
 @allure.feature('READ')
 @allure.severity('normal')
+@pytest.mark.api
 def test_negativ_search_actor_api():
     with allure.step('Задать url запроса'):
         url = f"{base_url}/v1.4/person/search"
