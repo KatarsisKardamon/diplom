@@ -1,5 +1,8 @@
 import requests
-from config import TOKEN, base_url, ver_film_name, ver_actor, ver_year, ver_fees_russia_value, neg_ver_year
+from config import (
+    TOKEN, base_url, ver_film_name, ver_actor,
+    ver_year, ver_fees_russia_value, neg_ver_year
+)
 import allure
 import pytest
 
@@ -55,7 +58,10 @@ def test_search_actor_api():
 def test_search_random_api():
     with allure.step('Задать url запроса'):
         url = f"{base_url}/v1.4/movie/random"
-    with allure.step('Задать параметры запроса с переменными ver_year, ver_fees_russia_value'):
+    with allure.step(
+            'Задать параметры запроса с переменными ver_year,'
+            r'ver_fees_russia_value'
+    ):
         params = {
             "notNullFields": 'year',
             "year": ver_year,
@@ -75,7 +81,10 @@ def test_search_random_api():
 def test_negativ_search_random_api():
     with allure.step('Задать url запроса'):
         url = f"{base_url}/v1.4/movie/random"
-    with allure.step('Задать параметры запроса с переменными neg_ver_year, ver_fees_russia_value'):
+    with allure.step(
+            'Задать параметры запроса с переменными neg_ver_year,'
+            r'ver_fees_russia_value'
+    ):
         params = {
             "notNullFields": 'year',
             "year": neg_ver_year,

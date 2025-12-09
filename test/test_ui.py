@@ -31,7 +31,10 @@ def test_search_film_name(driver):
 
 
 @allure.title('Переход на страницу фильма')
-@allure.description('Проверяется отображение названия фильма в заголовке на странице фильма')
+@allure.description(
+    'Проверяется отображение названия'
+    r'фильма в заголовке на странице фильма'
+)
 @allure.feature('READ')
 @allure.severity('normal')
 @pytest.mark.ui
@@ -65,7 +68,10 @@ def test_search_actor(driver):
 
 
 @allure.title('Переход на страницу актера')
-@allure.description('Проверяется отображение имени актера в заголовке на странице актера')
+@allure.description(
+    'Проверяется отображение имени'
+    r'актера в заголовке на странице актера'
+)
 @allure.feature('READ')
 @allure.severity('normal')
 @pytest.mark.ui
@@ -83,14 +89,20 @@ def test_actor_page(driver):
 
 
 @allure.title('Поиск фильма по несуществующему имени')
-@allure.description('Проверяется отображение текста в шторке поиска "По вашему запросу ничего не найдено"')
+@allure.description(
+    'Проверяется отображение текста в шторке'
+    r'поиска "По вашему запросу ничего не найдено"')
 @allure.feature('READ')
 @allure.severity('normal')
 @pytest.mark.ui
 def test_negativ_name(driver):
     with allure.step('Открыть главную страницу сайта'):
         driver.get("https://www.kinopoisk.ru/")
-    with allure.step('Ввести в поле поиска несуществующее название фильма отображение текста "По вашему запросу ничего не найдено"'):
+    with allure.step(
+            'Ввести в поле поиска несуществующее'
+            r'название фильма отображение текста'
+            r'"По вашему запросу ничего не найдено"'
+    ):
         driver.find_element(By.NAME, "kp_query").send_keys(neg_name)
     with allure.step('Проверить в в шторке поиска '):
         assert driver.find_element(
